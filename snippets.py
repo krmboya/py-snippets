@@ -24,6 +24,8 @@ class MurkierBunch2(dict):
     __setattr__ = dict.__setitem__
     __delattr__ = dict.__delitem__
 
+# however, the above two are not preferable. Use getattr, setattr and delattr
+
 
 # Assigning and testing in one statement
 
@@ -55,3 +57,9 @@ while data.set(foo()):
     bar(data.get())
 
 """
+
+# Get the intersect of two dicts
+print [k for k in some_dict if k in another_dict]
+# or
+print filter(some_dict.has_key, another_dict.keys())
+
