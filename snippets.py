@@ -108,6 +108,17 @@ def is_string(item):
 def is_scalar_upgraded(item):
     return is_string(item) or is_scalar(item)
 
-# see related solutions: http://stackoverflow.com/questions/952914/making-a-flat-list-out-of-list-of-lists-in-python
+# see related: http://stackoverflow.com/questions/952914/making-a-flat-list-out-of-list-of-lists-in-python
 
+
+# Pairing each item in a list to each item in another list
+# >>> a = [1, 2, 3]
+# >>> b = [4, 5]
+# [(x, y) for x in a for b in y]
+# i.e. looping over b for each item in a
+
+
+# Transposing a 2d array
+# array = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
+# [[row[col] for row in arr] for col in range(len(array[0]))]
 
