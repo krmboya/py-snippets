@@ -122,3 +122,17 @@ def is_scalar_upgraded(item):
 # array = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
 # [[row[col] for row in arr] for col in range(len(array[0]))]
 
+
+# Looking up many items in a long list
+# ------------------------------------
+# >>> import bisect
+# >>> the_list.sort()
+# >>> the_item = foo
+# >>> insertion_point = bisect.bisect(the_list, the_item)
+# >>> exists = the_list[insertion_point-1:insertion_point] == [the_item]
+
+# Why slicing?
+# What about using an auxilliary dictionary?
+# Why not brute force comparisons?
+
+
