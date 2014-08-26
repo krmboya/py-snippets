@@ -136,3 +136,44 @@ def is_scalar_upgraded(item):
 # Why not brute force comparisons?
 
 
+# Finding the list of indices leading to an item in a deeply nested sequence
+# --------------------------------------------------------------------------
+import types, sys
+
+class ItemFound(Exception):
+    """Raised when the item is found storing the list of indices """
+
+    def __init__(self, path):
+        self.path = path
+
+def find_indices_path(sequence, target):
+    """Finds the list of indices into sequence that will get you to target
+
+    If item is found, returns the list of indices, otherwise returns None"""
+
+    def is_sequence(item):
+        """Returns true if item is list or tuple"""
+
+        return isinstance(item, types.ListType) or isinstance(item, types.TupleType)
+
+    def recursive_find(seq, current_path):
+        """Runs through possibly nested `seq` saving the path until it finds target"""
+
+        for index, item in enumerate(seq):
+            if item == target:
+                current_path.append(index)
+                raise ItemFound(current_path)
+            elif is_sequence(item):
+                new_path = current_path + [index]
+                recursive_find(item, new_path)
+
+    try:
+        recursive_find(sequence, [])
+    except ItemFound as e:
+        return e.path
+    else:
+        return None
+    
+
+
+
