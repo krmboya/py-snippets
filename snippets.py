@@ -173,7 +173,16 @@ def find_indices_path(sequence, target):
         return e.path
     else:
         return None
-    
 
+
+# Quicksort
+# ---------
+# For demo purposes only. For production use the in-built library
+
+def qsort(L):
+    if len(L) <= 1:
+        return L
+    return qsort([lt for lt in L[1:] if lt < L[0]]) + L[0:1] + \
+        qsort([gte for gte in L[1:] if gte >= L[0]])
 
 
